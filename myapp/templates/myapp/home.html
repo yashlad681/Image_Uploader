@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image Uploader</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="py-5 text-center bg-secondary text-white">
+      <h1 class="mb-3"> Upload Image </h1>
+      <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.as_p}}
+      <input type="submit" class="btn btn-danger" value='Upload'>
+    </form>
+    </div>
+    <div class="row">
+      {% for img in img  %}
+         <div class="col-sm-4">
+           <div class='card m-2'>
+             <img src=" {{img.photo.url}} " alt=""  class="card-img-top" height="200px">  
+           </div> 
+           <div class="card-footer"><small  class="text-muted">{{img.date}}</small></div>
+         </div>
+      {% endfor %}
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
